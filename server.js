@@ -75,17 +75,17 @@ app.get('/users/firstname', (req, res) => {
     });
 });
 
-app.get('/admin/check', (req, res) => {
-    const userId = req.params.userID;
-    db.query('SELECT admin FROM users WHERE userID = ?', [userId], (error, results) => {
-        if (error) {
-            console.error('Error querying database:', error);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
-        const isAdmin = results.length > 0 && results[0].admin === 1;
-        res.json({ isAdmin });
-    });
-});
+// app.get('/admin/check', (req, res) => {
+//     const userId = req.params.userID;
+//     db.query('SELECT admin FROM users WHERE userID = ?', [userId], (error, results) => {
+//         if (error) {
+//             console.error('Error querying database:', error);
+//             return res.status(500).json({ error: 'Internal server error' });
+//         }
+//         const isAdmin = results.length > 0 && results[0].admin === 1;
+//         res.json({ isAdmin });
+//     });
+// });
 
 app.delete('/users/:userID', (req, res) => {
     const userID = req.params.userID;
