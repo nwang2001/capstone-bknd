@@ -178,9 +178,9 @@ app.get('/users', (req, res) => {
     });
 });
 
-app.get('/users/firstname', (req, res) => {
-    const userId = req.params.userID;
-    db.query('SELECT firstName FROM users WHERE userId = ?', [userId], (error, results) => {
+app.post('/users/firstname', (req, res) => {
+    const userId = req.body.userId;
+    db.query(`SELECT firstName FROM users WHERE userID = ?`, [userId], (error, results) => {
         if (error) {
             console.error('Error querying database:', error);
             return res.status(500).json({ error: 'Internal server error' });
